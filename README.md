@@ -1,5 +1,7 @@
 # Running the code
 
+For Chinese instructions, see [README.zh-CN.md](README.zh-CN.md).
+
 ## 1. Install
 
 Use Python 3.12 or newer on macOS/Linux, with a C compiler available as `cc`.
@@ -77,3 +79,43 @@ python scripts/simulate.py --inputs inputs.csv --calibration outputs/source_shif
 ```
 
 The calibration file applies to the control's `study_id`; provide inputs from that source when running the calibrated simulation.
+
+## 5. Run the v0.46 experiments
+
+Install the additional experiment dependencies:
+
+```bash
+python -m pip install -r requirements-experiments.txt
+```
+
+Save the curated data archive as `yellow_catfish_data_package.zip`. Import its three input tables, saved fits and predictions, and figure source data:
+
+```bash
+python scripts/prepare_experiment_data.py --archive yellow_catfish_data_package.zip
+```
+
+Use the imported results to regenerate the study summaries, 20,000 study bootstrap samples, development predictions, and Figures 2–4 and S1–S2:
+
+```bash
+python scripts/review_targets_v046.py stats
+python scripts/finalize_review_records_v046.py
+python scripts/plot_review_v046.py
+```
+
+Results are written to `artifacts/reviewer-revision-v0.46/`; plots and trajectory CSVs are written to `outputs/figures_v0.46/`.
+
+To fit all experiments from the input tables, use a fresh checkout and import with `--data-only`, then run these commands in order:
+
+```bash
+python scripts/prepare_experiment_data.py --archive yellow_catfish_data_package.zip --data-only
+python scripts/review_experiments_v046.py nested
+python scripts/review_targets_v046.py baselines
+python scripts/review_targets_v046.py diagnostics
+python scripts/review_tabular_baselines_v046.py
+python scripts/review_tabular_baselines_v046.py --tune
+python scripts/review_targets_v046.py stats
+python scripts/finalize_review_records_v046.py
+python scripts/plot_review_v046.py
+```
+
+The nested command runs 193 global fits across four configurations using four worker processes and reuses any saved fits. The baseline commands run SGR, TGC, ridge regression, XGBoost, and TabICLv2, followed by selection of ridge and XGBoost settings in the inner study blocks. TabICLv2 downloads its pretrained regression checkpoint on first use and runs on CPU.

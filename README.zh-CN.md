@@ -1,5 +1,7 @@
 # 运行代码
 
+英文说明见 [README.md](README.md)。
+
 ## 1. 安装环境
 
 在 macOS/Linux 上使用 Python 3.12 或更高版本，并确保可以通过 `cc` 命令调用 C 编译器。
@@ -79,3 +81,43 @@ python scripts/simulate.py --inputs inputs.csv --calibration outputs/source_shif
 ```
 
 校准文件对应对照的 `study_id`；使用该文件运行仿真时，输入应来自同一来源。
+
+## 5. 运行 v0.46 实验
+
+安装实验所需的额外依赖：
+
+```bash
+python -m pip install -r requirements-experiments.txt
+```
+
+将整理后的数据压缩包保存为 `yellow_catfish_data_package.zip`，导入三张输入表、已保存的拟合和预测，以及绘图数据：
+
+```bash
+python scripts/prepare_experiment_data.py --archive yellow_catfish_data_package.zip
+```
+
+使用导入的结果生成研究分数汇总、20,000 次研究 Bootstrap、全开发集预测及图 2–4 和 S1–S2：
+
+```bash
+python scripts/review_targets_v046.py stats
+python scripts/finalize_review_records_v046.py
+python scripts/plot_review_v046.py
+```
+
+实验结果写入 `artifacts/reviewer-revision-v0.46/`，图片和轨迹 CSV 写入 `outputs/figures_v0.46/`。
+
+如需从输入表重新拟合所有实验，在新克隆的仓库中使用 `--data-only` 导入，然后按顺序运行：
+
+```bash
+python scripts/prepare_experiment_data.py --archive yellow_catfish_data_package.zip --data-only
+python scripts/review_experiments_v046.py nested
+python scripts/review_targets_v046.py baselines
+python scripts/review_targets_v046.py diagnostics
+python scripts/review_tabular_baselines_v046.py
+python scripts/review_tabular_baselines_v046.py --tune
+python scripts/review_targets_v046.py stats
+python scripts/finalize_review_records_v046.py
+python scripts/plot_review_v046.py
+```
+
+嵌套命令使用四个工作进程，运行四种配置的 193 个全局拟合，并复用已保存的拟合。基线命令依次运行 SGR、TGC、岭回归、XGBoost 和 TabICLv2，再在内层研究块中选择岭回归和 XGBoost 的设置。TabICLv2 首次使用时下载预训练回归权重，使用 CPU 运行。

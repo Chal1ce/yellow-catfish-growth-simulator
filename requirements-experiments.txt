@@ -1,0 +1,6 @@
+-r requirements.txt
+scikit-learn==1.9.1
+xgboost==3.4.1
+torch==2.8.0
+tabicl==2.2.0
+matplotlib==3.11.2

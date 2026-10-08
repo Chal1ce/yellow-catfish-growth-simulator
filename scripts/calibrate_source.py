@@ -61,7 +61,7 @@ def main():
 
     fits = [least_squares(residual, start, bounds=([-4., -4.], [4., 4.]),
                           max_nfev=300, ftol=1e-10, xtol=1e-10, gtol=1e-10)
-            for start in ([0., 0.], [-1., 0.], [1., 0.])]
+            for start in ([0., 0.], [-1., 0.], [1., -1.])]
     valid = [fit for fit in fits if np.max(abs(residual(fit.x))) < 100]
     if not valid:
         raise ValueError('No valid completed-control calibration')

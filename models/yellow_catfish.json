@@ -1,16 +1,16 @@
 {
-  "version": "0.39",
-  "candidate": "gain_only",
+  "version": "0.46",
+  "candidate": "gain_core",
   "core_parameters": [
-    -3.3869236064886246,
-    0.056398132906461215,
-    -0.12030280111736721,
-    -0.6101195550863214,
-    0.15766216675955175,
-    -7.725954016527364e-09,
-    -0.2457616587492845,
-    -0.41020693160414445,
-    0.9192428142110727,
+    -3.386923072042038,
+    0.056396806234434625,
+    -0.12030474396226355,
+    -0.6101524621326464,
+    0.15766158647952278,
+    -8.62733856033968e-09,
+    -0.24575716634019626,
+    -0.4102260542671408,
+    0.9192431474951749,
     0.0,
     0.0,
     0.0,
@@ -48,7 +48,12 @@
         0.0,
         0.0
       ],
-      "transform": "logit"
+      "transform": "logit",
+      "n": 9,
+      "studies": [
+        "Jiang2004"
+      ],
+      "effective_df": 1.0145531098726919
     },
     "adc_dry_pct": {
       "coefficients": [
@@ -63,7 +68,16 @@
         -0.19856611484135564,
         0.0
       ],
-      "transform": "logit"
+      "transform": "logit",
+      "n": 42,
+      "studies": [
+        "Hu2017",
+        "Jiang2004",
+        "Tang2012",
+        "Zhang2011",
+        "Zhang2017"
+      ],
+      "effective_df": 4.5267823495402135
     },
     "adc_energy_pct": {
       "coefficients": [
@@ -78,7 +92,15 @@
         -0.05317703188823903,
         0.0
       ],
-      "transform": "logit"
+      "transform": "logit",
+      "n": 36,
+      "studies": [
+        "Hu2017",
+        "Jiang2004",
+        "Zhang2011",
+        "Zhang2017"
+      ],
+      "effective_df": 4.249107678556597
     },
     "adc_lipid_pct": {
       "coefficients": [
@@ -93,7 +115,13 @@
         -0.07025139608189185,
         0.0
       ],
-      "transform": "logit"
+      "transform": "logit",
+      "n": 15,
+      "studies": [
+        "Hu2017",
+        "Jiang2004"
+      ],
+      "effective_df": 2.1344019819592286
     },
     "adc_phosphorus_pct": {
       "coefficients": [
@@ -108,7 +136,12 @@
         0.0,
         0.0
       ],
-      "transform": "logit"
+      "transform": "logit",
+      "n": 6,
+      "studies": [
+        "Tang2012"
+      ],
+      "effective_df": 1.0173525555480674
     },
     "adc_protein_pct": {
       "coefficients": [
@@ -123,7 +156,16 @@
         -0.4281754336609626,
         0.0
       ],
-      "transform": "logit"
+      "transform": "logit",
+      "n": 42,
+      "studies": [
+        "Hu2017",
+        "Jiang2004",
+        "Tang2012",
+        "Zhang2011",
+        "Zhang2017"
+      ],
+      "effective_df": 4.5267823495402135
     },
     "body_ash_wet_pct": {
       "coefficients": [
@@ -138,7 +180,17 @@
         -0.19300821102646604,
         0.0
       ],
-      "transform": "log"
+      "transform": "log",
+      "n": 44,
+      "studies": [
+        "Chen2014",
+        "Chen2016",
+        "Hu2017",
+        "Tang2012",
+        "Zhang2011",
+        "Zhang2017"
+      ],
+      "effective_df": 5.058349431960747
     },
     "body_energy_kj_g": {
       "coefficients": [
@@ -153,7 +205,18 @@
         -0.05968124066432725,
         0.0
       ],
-      "transform": "log"
+      "transform": "log",
+      "n": 49,
+      "studies": [
+        "Chen2014",
+        "Chen2016",
+        "Han2022",
+        "Hu2017",
+        "Tang2012",
+        "Zhang2011",
+        "Zhang2017"
+      ],
+      "effective_df": 5.110664416256865
     },
     "body_lipid_wet_pct": {
       "coefficients": [
@@ -168,7 +231,18 @@
         -0.17438760512838794,
         0.0
       ],
-      "transform": "log"
+      "transform": "log",
+      "n": 49,
+      "studies": [
+        "Chen2014",
+        "Chen2016",
+        "Han2022",
+        "Hu2017",
+        "Tang2012",
+        "Zhang2011",
+        "Zhang2017"
+      ],
+      "effective_df": 5.635604650197808
     },
     "body_moisture_wet_pct": {
       "coefficients": [
@@ -183,7 +257,18 @@
         0.036878269130005796,
         0.0
       ],
-      "transform": "log"
+      "transform": "log",
+      "n": 49,
+      "studies": [
+        "Chen2014",
+        "Chen2016",
+        "Han2022",
+        "Hu2017",
+        "Tang2012",
+        "Zhang2011",
+        "Zhang2017"
+      ],
+      "effective_df": 5.635604650197808
     },
     "body_protein_wet_pct": {
       "coefficients": [
@@ -198,7 +283,18 @@
         -0.04969684721025793,
         0.0
       ],
-      "transform": "log"
+      "transform": "log",
+      "n": 49,
+      "studies": [
+        "Chen2014",
+        "Chen2016",
+        "Han2022",
+        "Hu2017",
+        "Tang2012",
+        "Zhang2011",
+        "Zhang2017"
+      ],
+      "effective_df": 5.635604650197808
     },
     "urinary_fraction_pct": {
       "coefficients": [
@@ -213,7 +309,13 @@
         0.0,
         0.0
       ],
-      "transform": "logit"
+      "transform": "logit",
+      "n": 21,
+      "studies": [
+        "Zhang2011",
+        "Zhang2017"
+      ],
+      "effective_df": 2.8820309226804888
     },
     "vertebrae_ash_dm_pct": {
       "coefficients": [
@@ -228,73 +330,81 @@
         0.0,
         0.0
       ],
-      "transform": "log"
+      "transform": "log",
+      "n": 6,
+      "studies": [
+        "Tang2012"
+      ],
+      "effective_df": 1.0173525555480674
     }
   },
   "source_shifts": {
     "Chen2014": {
-      "capacity_log_offset": 0.28266369740385794,
-      "eta_offset": -0.21003775201772526
+      "capacity_log_offset": 0.2826652246559836,
+      "eta_offset": -0.2100327971391555
     },
     "Chen2016": {
-      "capacity_log_offset": 0.38611024315318315,
-      "eta_offset": 0.45112473085657995
+      "capacity_log_offset": 0.3861127261748276,
+      "eta_offset": 0.4511352641000257
     },
     "Chen2023Se": {
-      "capacity_log_offset": -0.13902337513607668,
-      "eta_offset": -0.13707306849101436
+      "capacity_log_offset": -0.13902243668714717,
+      "eta_offset": -0.1370745402155477
     },
     "Dong2017": {
-      "capacity_log_offset": 0.11126126084167887,
-      "eta_offset": -0.39330380971018847
+      "capacity_log_offset": 0.11126193369505703,
+      "eta_offset": -0.3933063437755522
     },
     "Han2022": {
-      "capacity_log_offset": 0.042164081723549636,
-      "eta_offset": 0.08833157345801161
+      "capacity_log_offset": 0.04216489181215417,
+      "eta_offset": 0.08833380651753772
     },
     "Hu2017": {
-      "capacity_log_offset": 0.22208091643404823,
-      "eta_offset": 0.24849761386242467
+      "capacity_log_offset": 0.22208315753067726,
+      "eta_offset": 0.24850371900492432
     },
     "Jiang2004": {
-      "capacity_log_offset": -0.27811333979026026,
-      "eta_offset": -0.6283216291550677
+      "capacity_log_offset": -0.27811465069457375,
+      "eta_offset": -0.6283322970993287
     },
     "Liu2023": {
-      "capacity_log_offset": -0.09637931261286957,
-      "eta_offset": -0.06547257248229461
+      "capacity_log_offset": -0.09637770582875514,
+      "eta_offset": -0.06547053609889167
     },
     "Tang2012": {
-      "capacity_log_offset": -0.6209363214759794,
-      "eta_offset": -0.34053246733831904
+      "capacity_log_offset": -0.6209437940301342,
+      "eta_offset": -0.3405486504540125
     },
     "Wang2025": {
-      "capacity_log_offset": -0.4528095599073247,
-      "eta_offset": 0.024896742234837024
+      "capacity_log_offset": -0.4528117721020009,
+      "eta_offset": 0.024889396324938053
     },
     "Zhang2011": {
-      "capacity_log_offset": 0.03930097961370678,
-      "eta_offset": 0.03579869128990851
+      "capacity_log_offset": 0.0392993670851964,
+      "eta_offset": 0.03579675380464961
     },
     "Zhang2017": {
-      "capacity_log_offset": -0.13366128125295662,
-      "eta_offset": 0.06871963022345481
+      "capacity_log_offset": -0.13366122844122238,
+      "eta_offset": 0.06871863972053438
     },
     "Zhang2021": {
-      "capacity_log_offset": 0.2942733898119796,
-      "eta_offset": 0.1904992656138297
+      "capacity_log_offset": 0.2942749174782382,
+      "eta_offset": 0.19050213984819248
     },
     "Zhao2020": {
-      "capacity_log_offset": 0.06891304869164774,
-      "eta_offset": 0.1299246294815747
+      "capacity_log_offset": 0.06891334758445784,
+      "eta_offset": 0.129927763155051
     },
     "Zheng2023": {
-      "capacity_log_offset": 0.13481238076137514,
-      "eta_offset": 0.2915940586639564
+      "capacity_log_offset": 0.13481300980917302,
+      "eta_offset": 0.29159841622597243
     },
     "Zheng2025": {
-      "capacity_log_offset": 0.1390914284272271,
-      "eta_offset": 0.24536008159977976
+      "capacity_log_offset": 0.1390915427903458,
+      "eta_offset": 0.24536476439716667
     }
-  }
+  },
+  "maintenance_coefficient": 0.0,
+  "maintenance_allocation": "Effective conversion loss includes nongrowth allocation; no independent maintenance term",
+  "fit_record": "reviewer-revision-v0.46/fits/gain_core__all.json"
 }

@@ -19,7 +19,7 @@ static int rates(int n,const double *in,const double *y,const double *cap,const 
         if(mode==4)offer=a[8]*anchor[control];
         double intake=fmin(capacity,offer),eta=1./(1.+exp(-(eta0[i]+params[6]*log(w/10.))));
         double c=a[3]*intake,f=(1.-adc[i])*c,u=urine[i]*c,assimilated=c-f-u;
-        double loss=(1.-eta)*assimilated,maint=6.14421235332821e-6*pow(2.,(a[1]-27.)/10.)*pow(w,2./3.);
+        double loss=(1.-eta)*assimilated,maint=0.;
         out[7*i]=(assimilated-loss-maint)/rho[i];out[7*i+1]=intake;
         out[7*i+2]=c;out[7*i+3]=f;out[7*i+4]=u;out[7*i+5]=loss;out[7*i+6]=maint;
     }return 0;

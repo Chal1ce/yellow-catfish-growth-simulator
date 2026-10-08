@@ -6,3 +6,8 @@ outputs/
 runtime/
 *.dylib
 *.so
+data/
+artifacts/
+.cache/
+*.ckpt
+*.zip
