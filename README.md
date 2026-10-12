@@ -119,3 +119,15 @@ python scripts/plot_review_v046.py
 ```
 
 The nested command runs 193 global fits across four configurations using four worker processes and reuses any saved fits. The baseline commands run SGR, TGC, ridge regression, XGBoost, and TabICLv2, followed by selection of ridge and XGBoost settings in the inner study blocks. TabICLv2 downloads its pretrained regression checkpoint on first use and runs on CPU.
+
+
+## 6. Run the v0.47 global sensitivity experiment
+
+After importing the literature data as above, run:
+
+```bash
+python scripts/global_sensitivity_v047.py
+python scripts/summarize_global_sensitivity_v047.py
+```
+
+Outputs are written to `artifacts/global-sensitivity-v0.47/`. The experiment uses the frozen model, two independent Sobol scrambles and two additional coefficient ranges. Raw response arrays are saved as NPZ files; the second command produces CSV summaries.

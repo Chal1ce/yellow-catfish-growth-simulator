@@ -121,3 +121,15 @@ python scripts/plot_review_v046.py
 ```
 
 嵌套命令使用四个工作进程，运行四种配置的 193 个全局拟合，并复用已保存的拟合。基线命令依次运行 SGR、TGC、岭回归、XGBoost 和 TabICLv2，再在内层研究块中选择岭回归和 XGBoost 的设置。TabICLv2 首次使用时下载预训练回归权重，使用 CPU 运行。
+
+
+## 6. 运行 v0.47 全局敏感性实验
+
+按上文导入文献数据后运行：
+
+```bash
+python scripts/global_sensitivity_v047.py
+python scripts/summarize_global_sensitivity_v047.py
+```
+
+输出位于 `artifacts/global-sensitivity-v0.47/`。实验使用冻结模型、两个独立 Sobol 采样重复及两个额外系数区间。原始响应保存为 NPZ，第二条命令生成汇总 CSV。
