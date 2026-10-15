@@ -42,7 +42,7 @@ def scores():
  rr=read('artifacts/reviewer-revision-v0.46/all_study_metrics.csv');lookup={(r['model'],r['study_id']):r for r in rr};order=sorted(ANCHORS,key=lambda s:float(lookup['coupled_joint',s]['W_MAPE_pct']));models=[('coupled_uncalibrated_matched','Before calibration','#9BA6AE'),('coupled_joint','After calibration','#235C8E')]
  if any(float(lookup[m,s][k])<=0 for m,l,c in models for s in order for k in ['W_MAPE_pct','gain_MAPE_pct']):raise ValueError('Logarithmic error axes require positive scores')
  fig,axes=plt.subplots(2,1,figsize=(3.45,5.85),sharey=True);fig.subplots_adjust(left=.28,right=.985,bottom=.13,top=.945,hspace=.37)
- for letter,ax,key,title in zip('ab',axes,['W_MAPE_pct','gain_MAPE_pct'],['Growth endpoint','Biomass gain']):
+ for letter,ax,key,title in zip('ab',axes,['W_MAPE_pct','gain_MAPE_pct'],['Growth endpoint','Individual mass gain']):
   for i,s in enumerate(order):ax.plot([float(lookup[m,s][key]) for m,l,c in models],[i,i],color='#D5DCE1',lw=.8,zorder=1)
   for m,label,c in models:ax.scatter([float(lookup[m,s][key]) for s in order],np.arange(16),s=15,color=c,label=label,zorder=3)
   ax.set_xscale('log');ax.set_xlim(.7,700);ax.set_xticks([1,10,100]);ax.set_xticklabels(['1','10','100']);ax.set_yticks(np.arange(16));ax.set_yticklabels(order);ax.grid(axis='x',color='#E3E8EB',lw=.5);ax.set_title(title,fontsize=8,pad=8);ax.set_xlabel('Study MAPE (%) · log scale',fontsize=7.2);ax.annotate(letter,(0,1),xycoords='axes fraction',xytext=(-15,8),textcoords='offset points',weight='bold',fontsize=9,annotation_clip=False)
@@ -54,7 +54,7 @@ def scores():
  ax.set_xticks(range(3));ax.set_xticklabels(ss);ax.set_ylabel('Cumulative intake MAPE (%)');ax.set_ylim(0,50);fig.legend(loc='lower center',ncol=2,bbox_to_anchor=(.53,.02),fontsize=6.8,columnspacing=.8,handletextpad=.4);dynamic.save(fig,'fig3_intake')
  intervals=read('artifacts/reviewer-revision-v0.46/score_intervals.csv');look={(r['model'],r['metric']):r for r in intervals};names=['SGR_growth_only','TGC_plus_intake','ridge','XGBoost','TabICLv2','coupled_joint','nested_selected'];labels=['SGR','TGC + intake','Ridge','XGBoost','TabICLv2','Coupled core','Nested selection']
  fig,axes=plt.subplots(1,2,figsize=(7.0866,3.6),sharey=True);fig.subplots_adjust(left=.18,right=.98,bottom=.19,top=.87,wspace=.27)
- for ax,metric,letter,title in zip(axes,['W','gain'],'ab',['Growth endpoint','Biomass gain']):
+ for ax,metric,letter,title in zip(axes,['W','gain'],'ab',['Growth endpoint','Individual mass gain']):
   for i,m in enumerate(names):
    r=look[m,metric];v,lo,hi=[float(r[k]) for k in ['mean','lower','upper']];ax.errorbar(v,i,xerr=[[v-lo],[hi-v]],fmt='o',ms=4,capsize=2,color='#235C8E' if m in ['coupled_joint','nested_selected'] else '#788792',lw=1)
   ax.set_yticks(range(len(labels)));ax.set_yticklabels(labels);ax.set_xlim(left=0);ax.set_xlabel('Mean study MAPE (%)');ax.set_title(title,pad=12);ax.annotate(letter,(0,1),xycoords='axes fraction',xytext=(-15,12),textcoords='offset points',weight='bold',fontsize=9,annotation_clip=False);ax.grid(axis='x',color='#E3E8EB',lw=.5)
